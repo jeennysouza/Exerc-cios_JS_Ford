@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Entrada de dados
+let opcao = prompt("Escolha uma opção:\n1 - Calcular taxa de natalidade\n2 - Calcular taxa de mortalidade");
+opcao = parseInt(opcao);
+
+// Processamento e saída de dados
+switch(opcao) {
+    case 1:
+        let numCrianças = parseInt(prompt("Digite o número de crianças nascidas:"));
+        let numHabitantesNatalidade = parseInt(prompt("Digite o número total de habitantes:"));
+        let taxaNatalidade = (numCrianças * 1000) / numHabitantesNatalidade;
+        alert("A taxa de natalidade é: " + taxaNatalidade.toFixed(2));
+        break;
+    case 2:
+        let numObitos = parseInt(prompt("Digite o número de óbitos:"));
+        let numHabitantesMortalidade = parseInt(prompt("Digite o número total de habitantes:"));
+        let taxaMortalidade = (numObitos * 1000) / numHabitantesMortalidade;
+        alert("A taxa de mortalidade é: " + taxaMortalidade.toFixed(2));
+        break;
+    default:
+        addEventListener("Opção inválida!");
+}
+    </script>
+</body>
+</html>

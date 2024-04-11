@@ -26,3 +26,51 @@
 
 //saida de dados
 // = mostrar a porcentagem de desconto se for alcool ou se for gasolina
+
+
+
+// Função para calcular o valor a ser pago
+function calcularValorPago(tipoCombustivel, litros) {
+    let precoPorLitro = 0;
+    let descontoPorLitro = 0;
+
+    switch (tipoCombustivel) {
+        case 'A':
+            // Álcool
+            precoPorLitro = 4.90;
+            if (litros <= 20) {
+                descontoPorLitro = 0.03;
+            } else {
+                descontoPorLitro = 0.05;
+            }
+            break;
+        case 'G':
+            // Gasolina
+            precoPorLitro = 5.30;
+            if (litros <= 20) {
+                descontoPorLitro = 0.04;
+            } else {
+                descontoPorLitro = 0.06;
+            }
+            break;
+        default:
+            console.log("Tipo de combustível inválido.");
+            return -1;
+    }
+
+    let valorTotal = litros * precoPorLitro;
+    let descontoTotal = litros * precoPorLitro * descontoPorLitro;
+    return valorTotal - descontoTotal;
+}
+
+// Entrada de dados
+let tipoCombustivel = prompt("Digite o tipo de combustível (A para Álcool, G para Gasolina):").toUpperCase();
+let litros = parseFloat(prompt("Digite a quantidade de litros vendidos:"));
+
+// Verificação e exibição do valor a ser pago
+if (!isNaN(litros) && (tipoCombustivel === 'A' || tipoCombustivel === 'G')) {
+    let valorPago = calcularValorPago(tipoCombustivel, litros);
+    console.log("Valor a ser pago: R$", valorPago.toFixed(2));
+} else {
+    console.log("Por favor, insira valores válidos.");
+}

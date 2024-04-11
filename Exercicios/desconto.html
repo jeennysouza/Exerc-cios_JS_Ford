@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+let totalCompra = parseFloat(prompt("Digite o valor total da compra:"));
+let codigoCliente = parseInt(prompt("Digite o código do cliente (1 para cliente comum, 2 para funcionário, 3 para VIP):"));
+
+ switch (codigoCliente) {
+    case 1 :
+    alert (totalCompra);
+    break;
+
+    case 2 : 
+    alert (totalCompra * 0.9) ;
+break;
+   case 3 : 
+   alert(totalCompra * 0.95)
+break;
+   default:
+   break;
+
+
+ }
+    
+    </script>
+</body>
+</html>

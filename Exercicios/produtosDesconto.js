@@ -23,3 +23,46 @@
 //saída de dados
 // = mostrar a saída dos produtos que ela escolher e a quantidade e o preço de cada produto
 // = mostrar também o desconto de cada produto
+
+
+
+
+// Função para calcular o total, o desconto e o total a pagar
+function calcularTotalAPagar(quantidade, precoUnitario) {
+    let total = quantidade * precoUnitario;
+    let desconto = 0;
+
+    if (quantidade <= 5) {
+        desconto = total * 0.02;
+    } else if (quantidade <= 10) {
+        desconto = total * 0.03;
+    } else {
+        desconto = total * 0.05;
+    }
+
+    let totalPagar = total - desconto;
+
+    return {
+        total: total,
+        desconto: desconto,
+        totalPagar: totalPagar
+    };
+}
+
+// Entrada de dados
+let nomeProduto = prompt("Digite a descrição do produto (nome):");
+let quantidade = parseInt(prompt("Digite a quantidade adquirida:"));
+let precoUnitario = parseFloat(prompt("Digite o preço unitário:"));
+
+// Verificação e cálculo do total a pagar
+if (!isNaN(quantidade) && !isNaN(precoUnitario) && quantidade > 0 && precoUnitario > 0) {
+    let resultado = calcularTotalAPagar(quantidade, precoUnitario);
+    console.log("Produto:", nomeProduto);
+    console.log("Quantidade:", quantidade);
+    console.log("Preço unitário:", precoUnitario.toFixed(2));
+    console.log("Total:", resultado.total.toFixed(2));
+    console.log("Desconto:", resultado.desconto.toFixed(2));
+    console.log("Total a pagar:", resultado.totalPagar.toFixed(2));
+} else {
+    console.log("Por favor, insira valores válidos para quantidade e preço unitário.");
+}

@@ -18,3 +18,36 @@
 
 //saída de dados
 // imprimir na tela a taxa de mortalidade ou natalidade
+
+
+
+// Função para calcular a taxa de natalidade
+function calcularTaxaNatalidade(criancasNascidas, numeroHabitantes) {
+    return (criancasNascidas * 1000) / numeroHabitantes;
+}
+
+// Função para calcular a taxa de mortalidade
+function calcularTaxaMortalidade(obitos, numeroHabitantes) {
+    return (obitos * 1000) / numeroHabitantes;
+}
+
+// Entrada de dados
+let opcao = prompt("Deseja calcular a taxa de natalidade (digite 'N') ou a taxa de mortalidade (digite 'M')?").toUpperCase();
+
+// Verificação e cálculo da taxa correspondente
+switch (opcao) {
+    case 'N':
+        let criancasNascidas = parseInt(prompt("Digite o número de crianças nascidas:"));
+        let numeroHabitantesNatalidade = parseInt(prompt("Digite o número total de habitantes:"));
+        let taxaNatalidade = calcularTaxaNatalidade(criancasNascidas, numeroHabitantesNatalidade);
+        console.log("Taxa de Natalidade:", taxaNatalidade.toFixed(2), "nascimentos por 1000 habitantes.");
+        break;
+    case 'M':
+        let obitos = parseInt(prompt("Digite o número de óbitos:"));
+        let numeroHabitantesMortalidade = parseInt(prompt("Digite o número total de habitantes:"));
+        let taxaMortalidade = calcularTaxaMortalidade(obitos, numeroHabitantesMortalidade);
+        console.log("Taxa de Mortalidade:", taxaMortalidade.toFixed(2), "óbitos por 1000 habitantes.");
+        break;
+    default:
+        console.log("Opção inválida. Por favor, escolha 'N' para calcular a taxa de natalidade ou 'M' para calcular a taxa de mortalidade.");
+}

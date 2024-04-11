@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       // Entrada de dados
+let nomeProduto = prompt("Digite o nome do produto:");
+let quantidade = parseInt(prompt("Digite a quantidade adquirida:"));
+let precoUnitario = parseFloat(prompt("Digite o preço unitário:"));
+
+// Processamento de dados
+let total = quantidade * precoUnitario;
+let desconto;
+
+if (quantidade <= 5) {
+    desconto = total * 0.02;
+} else if (quantidade <= 10) {
+    desconto = total * 0.03;
+} else {
+    desconto = total * 0.05;
+}
+
+let totalAPagar = total - desconto;
+
+// Saída de dados
+alert("Descrição do produto: " + nomeProduto);
+alert("Quantidade adquirida: " + quantidade);
+alert("Preço unitário: R$" + precoUnitario.toFixed(2));
+alert("Total: R$" + total.toFixed(2));
+alert("Desconto: R$" + desconto.toFixed(2));
+alert("Total a pagar: R$" + totalAPagar.toFixed(2));
+    </script>
+</body>
+</html>

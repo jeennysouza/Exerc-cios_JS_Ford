@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let nomes = [];
+
+// Realiza a leitura dos nomes das 10 pessoas
+for (let i = 1; i <= 10; i++) {
+    let nome = prompt(`Digite o nome da ${i}ª pessoa:`);
+    nomes.push(nome);
+}
+
+// Realiza a leitura de mais um nome para busca
+let nomeBusca = prompt("Digite um nome para buscar:");
+
+// Verifica se o nome está entre os 10 nomes lidos anteriormente
+if (nomes.includes(nomeBusca)) {
+    alert("ACHEI");
+} else {
+    alert("NÃO ACHEI");
+}
+    </script>
+</body>
+</html>

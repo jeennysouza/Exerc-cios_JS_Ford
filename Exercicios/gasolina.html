@@ -1,0 +1,52 @@
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posto Gasolina</title>
+</head>
+<body>
+    <script>
+        // Função para calcular o valor a ser pago pelo cliente
+function calcularValorPago(tipoCombustivel, litros) {
+    let precoLitro;
+    let descontoPorLitro;
+
+    switch (tipoCombustivel) {
+        case 'A':
+            precoLitro = 4.90;
+            descontoPorLitro = litros <= 20 ? 0.03 : 0.05;
+            break;
+        case 'G':
+            precoLitro = 5.30;
+            descontoPorLitro = litros <= 20 ? 0.04 : 0.06;
+            break;
+        default:
+            console.log("Tipo de combustível inválido.");
+            return;
+    }
+
+    const valorSemDesconto = precoLitro * litros;
+    const valorDesconto = valorSemDesconto * descontoPorLitro;
+    const valorFinal = valorSemDesconto - valorDesconto;
+
+    return valorFinal;
+}
+
+// Função principal
+function main() {
+    const tipoCombustivel = prompt("Informe o tipo de combustível (A para Álcool, G para Gasolina):").toUpperCase();
+    const litros = parseFloat(prompt("Informe a quantidade de litros vendidos:"));
+
+    const valorPago = calcularValorPago(tipoCombustivel, litros);
+    if (valorPago !== undefined) {
+        alert(`Valor a ser pago: R$ ${valorPago.toFixed(2)}`);
+    }
+}
+
+// Chamada da função principal
+main();
+
+    </script>
+</body>
+</html>
