@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado do Jogo de Futebol</title>
+</head>
+<body>
+    <h1>Resultado do Jogo de Futebol</h1>
+    <p>Por favor, informe os nomes dos times e o placar do jogo:</p>
+
+    <form id="placarForm">
+        <label for="time1">Time 1:</label>
+        <input type="text" id="time1" name="time1" required><br><br>
+
+        <label for="golsTime1">Gols do Time 1:</label>
+        <input type="number" id="golsTime1" name="golsTime1" required><br><br>
+
+        <label for="time2">Time 2:</label>
+        <input type="text" id="time2" name="time2" required><br><br>
+
+        <label for="golsTime2">Gols do Time 2:</label>
+        <input type="number" id="golsTime2" name="golsTime2" required><br><br>
+
+        <button type="submit">Verificar Resultado</button>
+    </form>
+
+    <script>
+        document.getElementById("placarForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita o envio do formulário
+
+            // Obter os valores dos times e do placar do jogo
+            let time1 = document.getElementById("time1").value;
+            let golsTime1 = parseInt(document.getElementById("golsTime1").value);
+            let time2 = document.getElementById("time2").value;
+            let golsTime2 = parseInt(document.getElementById("golsTime2").value);
+
+            // Verificar o resultado do jogo
+            if (golsTime1 === golsTime2) {
+                alert("O jogo terminou em empate.");
+            } else if (golsTime1 > golsTime2) {
+                alert("Vitória do " + time1 + ".");
+            } else {
+                alert("Vitória do " + time2 + ".");
+            }
+        });
+    </script>
+</body>
+</html>

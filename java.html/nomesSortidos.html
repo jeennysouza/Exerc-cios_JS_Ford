@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca de Nomes</title>
+</head>
+<body>
+    <h1>Busca de Nomes</h1>
+    <p>Informe os nomes de 10 pessoas:</p>
+
+    <form id="nomesForm">
+        <label for="nomes">Nomes:</label><br>
+        <input type="text" id="nome1" required><br>
+        <input type="text" id="nome2" required><br>
+        <input type="text" id="nome3" required><br>
+        <input type="text" id="nome4" required><br>
+        <input type="text" id="nome5" required><br>
+        <input type="text" id="nome6" required><br>
+        <input type="text" id="nome7" required><br>
+        <input type="text" id="nome8" required><br>
+        <input type="text" id="nome9" required><br>
+        <input type="text" id="nome10" required><br><br>
+
+        <label for="nomeBusca">Nome para Buscar:</label>
+        <input type="text" id="nomeBusca"><br><br>
+
+        <button type="submit">Buscar</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("nomesForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Evita o envio do formulário
+
+            // Armazenar os nomes em um vetor
+            let nomes = [];
+            nomes.push(document.getElementById("nome1").value);
+            nomes.push(document.getElementById("nome2").value);
+            nomes.push(document.getElementById("nome3").value);
+            nomes.push(document.getElementById("nome4").value);
+            nomes.push(document.getElementById("nome5").value);
+            nomes.push(document.getElementById("nome6").value);
+            nomes.push(document.getElementById("nome7").value);
+            nomes.push(document.getElementById("nome8").value);
+            nomes.push(document.getElementById("nome9").value);
+            nomes.push(document.getElementById("nome10").value);
+
+            // Nome para buscar
+            let nomeBusca = document.getElementById("nomeBusca").value;
+
+            // Verificar se o nome está no vetor
+            let encontrado = false;
+            for (let i = 0; i < nomes.length; i++) {
+                if (nomes[i] === nomeBusca) {
+                    encontrado = true;
+                    break;
+                }
+            }
+
+            // Exibir resultado
+            if (encontrado) {
+                document.getElementById("resultado").innerText = "ACHEI";
+            } else {
+                document.getElementById("resultado").innerText = "NÃO ACHEI";
+            }
+        });
+    </script>
+</body>
+</html>

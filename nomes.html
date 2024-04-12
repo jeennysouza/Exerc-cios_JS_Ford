@@ -24,6 +24,65 @@ if (nomes.includes(nomeBusca)) {
 } else {
     alert("NÃO ACHEI");
 }
-    </script>
+</script>
+
+
+
+
+<h1>Busca de Nomes</h1>
+
+<form id="nomeForm">
+    <label for="nome">Digite o nome que deseja buscar:</label><br>
+    <input type="text" id="nome" name="nome"><br><br>
+    <button type="submit">Buscar</button>
+</form>
+
+<p id="resultado"></p>
+
+<script>
+    // Array para armazenar os nomes
+    var nomes = [];
+
+    // Função para adicionar os nomes ao vetor
+    function adicionarNome(nome) {
+        nomes.push(nome);
+    }
+
+    // Função para buscar o nome
+    function buscarNome(nome) {
+        for (var i = 0; i < nomes.length; i++) {
+            if (nomes[i] === nome) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    // Função de tratamento do envio do formulário
+    document.getElementById("nomeForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+
+        var nomeBusca = document.getElementById("nome").value;
+
+        if (buscarNome(nomeBusca)) {
+            document.getElementById("resultado").innerText = "ACHEI";
+        } else {
+            document.getElementById("resultado").innerText = "NÃO ACHEI";
+        }
+    });
+
+    // Exemplo: adicionando alguns nomes ao vetor
+    adicionarNome("João");
+    adicionarNome("Maria");
+    adicionarNome("Pedro");
+    adicionarNome("Ana");
+    adicionarNome("José");
+    adicionarNome("Mariana");
+    adicionarNome("Carlos");
+    adicionarNome("Laura");
+    adicionarNome("Luiz");
+    adicionarNome("Juliana");
+</script>
+
 </body>
 </html>

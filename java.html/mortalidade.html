@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Taxa de Natalidade e Mortalidade</title>
+</head>
+<body>
+    <h1>Calculadora de Taxa de Natalidade e Mortalidade</h1>
+    <p>Selecione o que deseja calcular:</p>
+
+    <label for="calculoSelect">Selecione:</label>
+    <select id="calculoSelect">
+        <option value="natalidade">Taxa de Natalidade</option>
+        <option value="mortalidade">Taxa de Mortalidade</option>
+    </select><br><br>
+
+    <div id="inputsNatalidade" style="display: none;">
+        <label for="nascidos">Número de crianças nascidas:</label>
+        <input type="number" id="nascidos" required><br><br>
+
+        <label for="habitantes">Número de habitantes:</label>
+        <input type="number" id="habitantes" required><br><br>
+    </div>
+
+    <div id="inputsMortalidade" style="display: none;">
+        <label for="obitos">Número de óbitos:</label>
+        <input type="number" id="obitos" required><br><br>
+
+        <label for="habitantesMortalidade">Número de habitantes:</label>
+        <input type="number" id="habitantesMortalidade" required><br><br>
+    </div>
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcular() {
+            let select = document.getElementById("calculoSelect");
+            let optionSelecionada = select.options[select.selectedIndex].value;
+
+            switch(optionSelecionada) {
+                case "natalidade":
+                    let nascidos = parseInt(document.getElementById("nascidos").value);
+                    let habitantes = parseInt(document.getElementById("habitantes").value);
+                    let taxaNatalidade = (nascidos * 1000) / habitantes;
+                    document.getElementById("resultado").innerText = "A taxa de natalidade é: " + taxaNatalidade.toFixed(2);
+                    break;
+
+                case "mortalidade":
+                    let obitos = parseInt(document.getElementById("obitos").value);
+                    let habitantesMortalidade = parseInt(document.getElementById("habitantesMortalidade").value);
+                    let taxaMortalidade = (obitos * 1000) / habitantesMortalidade;
+                    document.getElementById("resultado").innerText = "A taxa de mortalidade é: " + taxaMortalidade.toFixed(2);
+                    break;
+            }
+        }
+
+        document.getElementById("calculoSelect").addEventListener("change", function() {
+            let select = document.getElementById("calculoSelect");
+            let optionSelecionada = select.options[select.selectedIndex].value;
+
+            if (optionSelecionada === "natalidade") {
+                document.getElementById("inputsNatalidade").style.display = "block";
+                document.getElementById("inputsMortalidade").style.display = "none";
+            } else if (optionSelecionada === "mortalidade") {
+                document.getElementById("inputsNatalidade").style.display = "none";
+                document.getElementById("inputsMortalidade").style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>

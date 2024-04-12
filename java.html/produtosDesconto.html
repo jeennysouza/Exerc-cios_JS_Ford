@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Compras</title>
+</head>
+<body>
+    <h1>Calculadora de Compras</h1>
+    <p>Informe os dados do produto:</p>
+
+    <label for="nomeProduto">Nome do Produto:</label>
+    <input type="text" id="nomeProduto"><br><br>
+
+    <label for="quantidade">Quantidade:</label>
+    <input type="number" id="quantidade"><br><br>
+
+    <label for="precoUnitario">Preço Unitário:</label>
+    <input type="number" id="precoUnitario"><br><br>
+
+    <button onclick="calcularTotal()">Calcular Total</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularTotal() {
+            let nomeProduto = document.getElementById("nomeProduto").value;
+            let quantidade = parseInt(document.getElementById("quantidade").value);
+            let precoUnitario = parseFloat(document.getElementById("precoUnitario").value);
+
+            let total = quantidade * precoUnitario;
+            let desconto;
+
+            if (quantidade <= 5) {
+                desconto = total * 0.02;
+            } else if (quantidade > 5 && quantidade <= 10) {
+                desconto = total * 0.03;
+            } else {
+                desconto = total * 0.05;
+            }
+
+            let totalPagar = total - desconto;
+
+            document.getElementById("resultado").innerHTML = "Produto: " + nomeProduto + "<br>" +
+                                                               "Quantidade: " + quantidade + "<br>" +
+                                                               "Preço Unitário: R$" + precoUnitario.toFixed(2) + "<br>" +
+                                                               "Total: R$" + total.toFixed(2) + "<br>" +
+                                                               "Desconto: R$" + desconto.toFixed(2) + "<br>" +
+                                                               "Total a Pagar: R$" + totalPagar.toFixed(2);
+        }
+    </script>
+</body>
+</html>

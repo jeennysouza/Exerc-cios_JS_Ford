@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Descontos</title>
+</head>
+<body>
+    <h1>Calculadora de Descontos</h1>
+    <p>Informe o valor total da compra e o código do cliente:</p>
+
+    <label for="valorCompra">Valor Total da Compra:</label>
+    <input type="number" id="valorCompra"><br><br>
+
+    <label for="codigoCliente">Código do Cliente:</label>
+    <select id="codigoCliente">
+        <option value="1">Cliente Comum</option>
+        <option value="2">Funcionário</option>
+        <option value="3">Cliente VIP</option>
+    </select><br><br>
+
+    <button onclick="calcularDesconto()">Calcular Desconto</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        function calcularDesconto() {
+            let valorCompra = parseFloat(document.getElementById("valorCompra").value);
+            let codigoCliente = document.getElementById("codigoCliente").value;
+            let desconto = 0;
+
+            switch (codigoCliente) {
+                case "1": // Cliente Comum
+                    desconto = 0;
+                    break;
+                case "2": // Funcionário
+                    desconto = valorCompra * 0.1;
+                    break;
+                case "3": // Cliente VIP
+                    desconto = valorCompra * 0.05;
+                    break;
+            }
+
+            let totalPagar = valorCompra - desconto;
+
+            document.getElementById("resultado").innerHTML = "Valor da Compra: R$" + valorCompra.toFixed(2) + "<br>" +
+                                                               "Desconto: R$" + desconto.toFixed(2) + "<br>" +
+                                                               "Total a Pagar: R$" + totalPagar.toFixed(2);
+        }
+    </script>
+</body>
+</html>
